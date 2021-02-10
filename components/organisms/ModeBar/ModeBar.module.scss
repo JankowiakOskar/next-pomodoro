@@ -1,0 +1,11 @@
+@use 'styles/helpers/mixins.scss' as *;
+@use 'styles/helpers/variables.scss' as *;
+
+.bar {
+  padding: 1rem;
+  width: 32rem;
+  height: 6.3rem;
+  @include setFlex(row, center, space-between);
+  border-radius: 2.5rem;
+  background-color: $darkNavyBlue;
+}

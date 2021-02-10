@@ -1,0 +1,43 @@
+@use 'styles/helpers/variables.scss' as *;
+@use 'styles/helpers/mixins.scss' as *;
+
+.label {
+  color: $darkGrey;
+}
+
+.input_wrapper{
+  margin-top: 8px;
+  position: relative;
+  width: auto;
+  height: auto;
+  &:hover path {
+    stroke-opacity: 1;
+  }
+}
+
+.input {
+  height: 4.8rem;
+  width: 14rem;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: $lightGrey;
+  color: $darkNavyBlue;
+  font-weight: bold;
+  border: none;
+}
+
+.icon_wrapper{
+  height: 2rem;
+  position: absolute;
+  @include setFlex(column, center, space-between);
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%);
+}
+
+.arrow_icon {
+  cursor: pointer;
+  &:hover {
+    background-color: $grey;
+  }
+}

@@ -1,0 +1,7 @@
+@use 'styles/helpers/mixins.scss' as *;
+
+.container {
+  min-height: 100vh;
+  padding: 4rem 0;
+  @include setFlex(column, center, flex-start);
+}

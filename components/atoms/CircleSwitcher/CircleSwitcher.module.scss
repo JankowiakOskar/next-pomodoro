@@ -1,0 +1,41 @@
+@use 'styles/helpers/variables.scss' as *;
+@use 'styles/helpers/mixins.scss' as *;
+
+
+.circle {
+  position: relative;
+  padding: 10px;
+  width: 4rem;
+  height: 4rem;
+  @include setFlex;
+  border-radius: 50%;
+  background-color: $grey;
+  color: $navyBlue;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+
+  &:hover {
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      border: .09rem solid $lightGrey;
+    }
+  }
+
+  & span {
+    font-size: 1.5rem;
+  }
+}
+
+.active_bg {
+  background-color: $darkNavyBlue;
+  color: $white;
+}
+
+.selected {
+  
+}

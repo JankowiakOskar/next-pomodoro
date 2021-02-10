@@ -1,0 +1,25 @@
+@use 'styles/helpers/variables.scss' as *;
+
+.spaceMonoFont{
+  font-family: $space-mono;
+}
+
+.robotoSlabFont{
+  font-family: $roboto-slab;
+}
+
+.kumbhSansFont {
+  font-family: $kumbh-sans;
+}
+
+.orangeBg{
+  background-color: $orange;
+}
+
+.purpleBg{
+  background-color: $purple;
+}
+
+.lightBlueBg{
+  background-color: $lightBlue;
+}
