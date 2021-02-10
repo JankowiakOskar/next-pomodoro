@@ -1,10 +1,18 @@
 export const SET_ACTIVE_MODE = 'SET_ACTIVE_MODE';
 
-export enum ModeName {
-  Pomodoro = 'pomodoro',
-  ShortBreak = 'short break',
-  LongBreak = 'long break',
+export enum FontClasses {
+  SpaceMonoFont = 'spaceMonoFont',
+  RobotoSlabFont = 'robotoSlabFont',
+  KumbhSansFont = 'kumbhSansFont',
 }
+
+export enum BgClasses {
+  Orange = 'orangeBg',
+  Purple = 'purpleBg',
+  LightBlue = 'lightBlueBg',
+}
+
+export type ModeName = 'pomodoro' | 'short break' | 'long break';
 
 export type TimeStamp = {
   minutes: number;
@@ -20,6 +28,8 @@ export interface Mode {
 export interface AppState {
   appModes: Mode[];
   activeMode: ModeName;
+  fontTheme: FontClasses;
+  colorTheme: BgClasses;
 }
 
 export interface SetActiveModeAction {

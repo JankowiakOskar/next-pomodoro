@@ -1,6 +1,6 @@
 import styles from './CircleSwitcher.module.scss';
 import theme from 'styles/Theme.module.scss';
-import { FontClasses, BgClasses } from 'utils/types';
+import { FontClasses, BgClasses } from 'store/types';
 import classNames from 'classnames';
 
 type Props = {
@@ -17,7 +17,7 @@ const CircleSwitcher: React.FC<Props> = ({
   const circleClass: string = classNames(styles.circle, {
     [theme[bgClass]]: bgClass,
     [theme[fontClass]]: fontClass,
-    [styles.active_bg]: fontClass && isActive,
+    [styles.activeBg]: fontClass && isActive,
     [styles.selected]: bgClass && isActive,
   });
   return <div className={circleClass}>{!bgClass && <span>Aa</span>}</div>;

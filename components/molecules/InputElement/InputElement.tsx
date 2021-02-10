@@ -40,7 +40,7 @@ const InputElement: React.FC<InputElementProps> = ({ label, initValue }) => {
       <label className={styles.label} htmlFor={label}>
         {label}
       </label>
-      <div className={styles.input_wrapper}>
+      <div className={styles.inputWrapper}>
         <input
           className={styles.input}
           name={label}
@@ -48,13 +48,13 @@ const InputElement: React.FC<InputElementProps> = ({ label, initValue }) => {
           onChange={(e) => handleChange(e)}
           value={value}
         />
-        <div className={styles.icon_wrapper}>
+        <div className={styles.iconWrapper}>
           <ArrowUp
             className={styles.arrow_icon}
             onClick={() => handleClick(value, ClickAction.increment)}
           />
           <ArrowDown
-            className={styles.arrow_icon}
+            className={styles.arrowIcon}
             onClick={() => handleClick(value, ClickAction.decrement)}
           />
         </div>
