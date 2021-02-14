@@ -22,7 +22,7 @@ export type TimeStamp = {
 export interface Mode {
   mode: ModeName;
   time: TimeStamp;
-  isPlayed: boolean;
+  isPlaying: boolean;
 }
 
 export interface AppState {

@@ -13,3 +13,10 @@ $darkNavyBlue: #161932;
 $kumbh-sans: 'Kumbh Sans', sans-serif;
 $roboto-slab: 'Roboto Slab', serif;
 $space-mono: 'Space Mono', monospace;
+
+
+:export {
+  orange: $orange;
+  purple: $purple;
+  lightBlue: $lightBlue;
+}

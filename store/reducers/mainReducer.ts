@@ -8,7 +8,7 @@ const initialState: AppState = {
         minutes: 25,
         seconds: 0,
       },
-      isPlayed: false,
+      isPlaying: false,
     },
     {
       mode: 'short break',
@@ -16,7 +16,7 @@ const initialState: AppState = {
         minutes: 5,
         seconds: 0,
       },
-      isPlayed: false,
+      isPlaying: false,
     },
     {
       mode: 'long break',
@@ -24,11 +24,11 @@ const initialState: AppState = {
         minutes: 15,
         seconds: 0,
       },
-      isPlayed: false,
+      isPlaying: false,
     },
   ],
   activeMode: 'pomodoro',
-  fontTheme: FontClasses.SpaceMonoFont,
+  fontTheme: FontClasses.KumbhSansFont,
   colorTheme: BgClasses.Orange,
 };
 

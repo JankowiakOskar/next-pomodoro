@@ -1,0 +1,32 @@
+@use 'styles/helpers/variables.scss' as *;
+@use 'styles/helpers/mixins.scss' as *;
+
+.panelWrapper {
+  width: 30rem;
+  height: 30rem;
+  @include setFlex;
+  border-radius: 50%;
+  background-color: $darkNavyBlue;
+  border-top: 1.5rem solid $darkNavyBlue;
+  border-right: 1.5rem solid #2E325A;
+  border-bottom: 1.5rem solid #2E325A;
+  border-left: 1.5rem solid #2E325A;
+  box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.75);
+}
+
+.timeControlWrapper{
+  width: 100%;
+  @include setFlex(column);
+
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  h3 {
+    padding-left: 20px;
+    width: 100%;
+    text-align: center;
+  }
+}
+

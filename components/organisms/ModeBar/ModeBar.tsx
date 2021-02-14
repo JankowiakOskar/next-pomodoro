@@ -8,6 +8,7 @@ const ModeBar = (): JSX.Element => {
   const { mainReducer: data } = useSelector((state: AppState) => state);
   const dispatch = useDispatch();
   const { appModes: modes, activeMode, fontTheme, colorTheme }: AppState = data;
+
   return (
     <div className={styles.bar}>
       {modes.map(({ mode }: Mode) => (
