@@ -1,4 +1,5 @@
 export const SET_ACTIVE_MODE = 'SET_ACTIVE_MODE';
+export const UPDATE_APP_MODE = 'UPDATE_APP_MODE';
 
 export enum FontClasses {
   SpaceMonoFont = 'spaceMonoFont',
@@ -37,4 +38,9 @@ export interface SetActiveModeAction {
   payload: ModeName;
 }
 
-export type AppActionTypes = SetActiveModeAction;
+export interface UpdateAppModeAction {
+  type: typeof UPDATE_APP_MODE;
+  payload: Mode[];
+}
+
+export type AppActionTypes = SetActiveModeAction | UpdateAppModeAction;

@@ -1,4 +1,11 @@
-import { AppState, FontClasses, BgClasses, AppActionTypes, SET_ACTIVE_MODE } from '../types';
+import {
+  AppState,
+  FontClasses,
+  BgClasses,
+  AppActionTypes,
+  SET_ACTIVE_MODE,
+  UPDATE_APP_MODE,
+} from '../types';
 
 const initialState: AppState = {
   appModes: [
@@ -38,6 +45,11 @@ export const mainReducer = (state = initialState, action: AppActionTypes): AppSt
       return {
         ...state,
         activeMode: action.payload,
+      };
+    case UPDATE_APP_MODE:
+      return {
+        ...state,
+        appModes: action.payload,
       };
     default:
       return state;

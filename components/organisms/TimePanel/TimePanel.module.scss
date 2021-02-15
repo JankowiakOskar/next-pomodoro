@@ -17,16 +17,25 @@
 .timeControlWrapper{
   width: 100%;
   @include setFlex(column);
+  color: $grey;
 
   h1 {
     width: 100%;
     text-align: center;
   }
 
+}
+
+.button {
+  background-color: transparent;
+  color: $grey;
+  border: none;
+
   h3 {
     padding-left: 20px;
     width: 100%;
     text-align: center;
+    cursor: pointer;
   }
 }
 
