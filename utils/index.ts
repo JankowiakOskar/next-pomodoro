@@ -5,7 +5,7 @@ export const getMode = (modeName: ModeName, allModes: Mode[]): Mode => {
   return matchedMode;
 };
 
-export const convertTimeToSec = ({ minutes, seconds }: TimeStamp): number => minutes * 60 + seconds;
+export const convertTimeToSec = ({ minutes }: TimeStamp): number => minutes * 60;
 
 export const formatTimeFromSec = (sec: number): [string, string] => {
   let minutes = Math.floor(sec / 60).toString();

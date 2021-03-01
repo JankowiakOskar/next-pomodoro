@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <Provider store={store}>
       <div>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </div>
     </Provider>
   );

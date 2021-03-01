@@ -2,6 +2,8 @@
 @use 'styles/helpers/mixins.scss' as *;
 
 
+
+
 .circle {
   position: relative;
   padding: 10px;
@@ -9,13 +11,10 @@
   height: 4rem;
   @include setFlex;
   border-radius: 50%;
-  background-color: $grey;
   color: $navyBlue;
   transition: all 0.2s ease-out;
   cursor: pointer;
-
   &:hover {
-
     &::after {
       content: '';
       position: absolute;
@@ -31,11 +30,19 @@
   }
 }
 
+.circleGrey {
+  @extend .circle;
+  background-color: $grey;
+}
+
 .activeBg {
   background-color: $darkNavyBlue;
   color: $white;
 }
 
 .selected {
-  
+  background-image: url('../../../assets/icons//check-mark.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 1.2rem;
 }

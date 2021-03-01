@@ -14,7 +14,7 @@ const ModeBar = (): JSX.Element => {
       {modes.map(({ mode }: Mode) => (
         <Button
           key={mode}
-          text={mode}
+          modeTitle={mode}
           isActive={activeMode === mode}
           setActiveMode={(modeName: ModeName) => dispatch(setActiveMode(modeName))}
           fontClass={fontTheme}

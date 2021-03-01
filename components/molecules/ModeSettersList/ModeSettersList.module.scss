@@ -1,0 +1,23 @@
+@use 'styles/helpers/variables.scss' as *;
+@use 'styles/helpers/mixins.scss' as *;
+
+.wrapper {
+  padding: 1rem 3rem;
+  width: 100%;
+  @include setFlex(column, center);
+  color: $black;
+
+  h4 {
+    padding: 0 0 0.3rem 0;
+  }
+}
+
+
+.modeList {
+  
+  width: 100%;
+}
+
+.modeListElement {
+  @include setFlex(row, center, space-between)
+}

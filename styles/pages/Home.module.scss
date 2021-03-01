@@ -1,7 +1,18 @@
 @use 'styles/helpers/mixins.scss' as *;
 
 .container {
-  min-height: 100vh;
-  padding: 4rem 0;
+  max-height: 100vh;
+  padding: 2rem 0;
   @include setFlex(column, center, flex-start);
+  overflow: hidden;
+}
+
+.modeBarWrapper {
+  padding: 4rem 0;
+}
+
+
+
+.settingsWrapper {
+  padding: 2rem 0 0 0;
 }

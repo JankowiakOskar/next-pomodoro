@@ -1,10 +1,18 @@
 import {
   ModeName,
   Mode,
+  Theme,
   SET_ACTIVE_MODE,
+  SET_ACTIVE_THEME,
+  REPLACE_ALL_STORE,
+  TOGGLE_MODAL,
   SetActiveModeAction,
+  SetActiveThemeAction,
   UpdateAppModeAction,
   UPDATE_APP_MODE,
+  ToggleModalAction,
+  AppState,
+  ReplaceAllStoreAction,
 } from '../types';
 import { RootState } from 'store/reducers';
 import { Action } from 'redux';
@@ -17,6 +25,14 @@ export const setActiveMode = (mode: ModeName): SetActiveModeAction => {
   };
 };
 
+export const setActiveTheme = (theme: Theme): SetActiveThemeAction => {
+  console.log(theme);
+  return {
+    type: SET_ACTIVE_THEME,
+    payload: theme,
+  };
+};
+
 export const updateMode = (
   modeToUpdate: Mode
 ): ThunkAction<void, RootState, unknown, Action<string>> => {
@@ -24,16 +40,26 @@ export const updateMode = (
     const {
       mainReducer: { appModes },
     } = getState();
-    console.log(modeToUpdate);
+
     const updatedAppModes = appModes.map(({ mode, ...rest }: Mode) => {
       if (mode === modeToUpdate.mode) return modeToUpdate;
       return { mode, ...rest };
     });
 
-    console.log(updatedAppModes);
     return dispatch({
       type: UPDATE_APP_MODE,
       payload: updatedAppModes,
     });
   };
 };
+
+export const toggleModal = (): ToggleModalAction => {
+  return {
+    type: TOGGLE_MODAL,
+  };
+};
+
+export const ReplaceAllStore = (store: AppState): ReplaceAllStoreAction => ({
+  type: REPLACE_ALL_STORE,
+  payload: store,
+});

@@ -7,3 +7,4 @@ declare module '*.jpeg';
 declare module '*.svg';
 declare module '*.gif';
 declare module 'react-redux';
+declare module 'react-dom';

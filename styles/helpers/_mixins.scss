@@ -1,8 +1,14 @@
+@use 'styles/helpers/variables.scss' as *;
+
 @mixin setFlex($direction: row, $align-items: center, $justify-content: center){
   display: flex;
   flex-direction: $direction;
   align-items: $align-items;
   justify-content: $justify-content;
+}
+
+@mixin tinyBorderBottom($color: $grey){
+  border-bottom: 1px solid $color;
 }
 
 

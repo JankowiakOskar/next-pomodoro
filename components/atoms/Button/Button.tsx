@@ -4,17 +4,21 @@ import { BgClasses, FontClasses, ModeName } from 'store/types';
 import classNames from 'classnames';
 
 type Props = {
-  text: ModeName;
+  text?: string;
+  modeTitle?: ModeName;
   isActive?: boolean;
   setActiveMode?: (text: ModeName) => void;
+  callBackOnClick?: () => void;
   bgClass: BgClasses;
   fontClass: FontClasses;
 };
 
 const Button: React.FC<Props> = ({
   text,
+  modeTitle,
   isActive = false,
   setActiveMode,
+  callBackOnClick,
   bgClass,
   fontClass,
 }): JSX.Element => {
@@ -26,15 +30,18 @@ const Button: React.FC<Props> = ({
   });
 
   const handleClick = (): void => {
-    if (setActiveMode) {
-      return setActiveMode(text);
+    if (modeTitle && setActiveMode) {
+      return setActiveMode(modeTitle);
+    }
+    if (callBackOnClick) {
+      callBackOnClick();
     }
     return;
   };
 
   return (
     <button className={btnClass} onClick={() => handleClick()}>
-      <span>{text}</span>
+      <span>{text || modeTitle}</span>
     </button>
   );
 };

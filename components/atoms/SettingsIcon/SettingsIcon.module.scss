@@ -1,0 +1,9 @@
+@use 'styles/helpers/variables.scss' as *;
+
+.settingsIcon {
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+  :hover {
+    fill: $darkGrey;
+  }
+}

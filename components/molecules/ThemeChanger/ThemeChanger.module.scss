@@ -1,0 +1,21 @@
+@use 'styles/helpers/variables.scss' as *;
+@use 'styles/helpers/mixins.scss' as *;
+
+.wrapper {
+  min-height: 10rem;
+  @include setFlex(column, center, center)
+}
+
+.title {
+  color: $black;
+  margin: 0 0 1rem 0;
+}
+
+
+.switchesWrapper{
+  @include setFlex(row, center, center);
+
+  & div {
+    margin: 0 10px;
+  }
+}
