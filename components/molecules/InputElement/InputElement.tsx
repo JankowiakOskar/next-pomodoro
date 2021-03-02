@@ -2,11 +2,12 @@ import styles from './InputElement.module.scss';
 import { ModeName } from 'store/types';
 import ArrowDown from 'assets/svgs/icon-arrow-down.svg';
 import ArrowUp from 'assets/svgs/icon-arrow-up.svg';
-
+import classNames from 'classnames';
 type InputElementProps = {
   className: string;
   label: ModeName;
   value: number;
+  labelFont?: string;
   setVal: (arg: { label: ModeName; value: number }) => void;
 };
 
@@ -19,8 +20,16 @@ enum ClickAction {
   decrement = 'dec',
 }
 
-const InputElement: React.FC<InputElementProps> = ({ className, label, value, setVal }) => {
-  const disablingCondition = (val: number): boolean => val < 0 || val > 60;
+const InputElement: React.FC<InputElementProps> = ({
+  className,
+  label,
+  value,
+  setVal,
+  labelFont,
+}) => {
+  const labelClasses = classNames(styles.label, labelFont);
+
+  const disablingCondition = (val: number): boolean => val <= 0 || val > 60;
 
   const handleClick = (val: number, action: ClickAction): void => {
     const nextVal: number = action === ClickAction.decrement ? (val -= 1) : (val += 1);
@@ -38,7 +47,7 @@ const InputElement: React.FC<InputElementProps> = ({ className, label, value, se
 
   return (
     <div className={className}>
-      <label className={styles.label} htmlFor={label}>
+      <label className={labelClasses} htmlFor={label}>
         {label}
       </label>
       <div className={styles.inputWrapper}>

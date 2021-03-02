@@ -8,4 +8,13 @@
   @include setFlex(row, center, space-between);
   border-radius: 2.5rem;
   background-color: $darkNavyBlue;
+
+
+  @include tablet {
+    min-width: 35rem;
+  }
+
+  @include desktop {
+    min-width: 45rem;
+  }
 }

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styles from './Modal.module.scss';
+import theme from 'styles/Theme.module.scss';
 import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleModal, ReplaceAllStore } from 'store/actions';
@@ -78,6 +79,7 @@ const Modal: React.FC<Props> = ({ isOpen, modalTitle, toggleModal, children }) =
   const dispatch = useDispatch();
   const isMounted = useMounted();
   const modalRef: Ref<HTMLDivElement | null> = useRef(null);
+  const textClass = theme[fontTheme];
 
   const handleToggleWithoutChanges = (): void => {
     const prevGlobalStateJSON = localStorage.getItem('appState');
@@ -106,7 +108,7 @@ const Modal: React.FC<Props> = ({ isOpen, modalTitle, toggleModal, children }) =
             >
               <motion.div ref={modalRef} className={styles.modal} variants={modalVariants}>
                 <motion.div className={styles.modalHeading}>
-                  <h3>{modalTitle}</h3>
+                  <h3 className={textClass}>{modalTitle}</h3>
                   <IconClose onClick={handleToggleWithoutChanges} />
                 </motion.div>
                 {children}

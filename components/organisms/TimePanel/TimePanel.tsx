@@ -3,22 +3,55 @@ import theme from 'styles/Theme.module.scss';
 import styles from './TimePanel.module.scss';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import useWindowWidth from 'hooks/useWindowWidth';
 import { AppState } from 'store/types';
+import { MediaBreakPoints } from 'utils/types';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { getMode, convertTimeToSec, cutStr, formatTimeFromSec } from 'utils';
 
 enum TimerMode {
   Restart = 'restart',
-  Pause = 'Pause',
-  Start = 'Start',
+  Pause = 'pause',
+  Start = 'start',
 }
 
-const TimePanel = (): React.ReactNode => {
+type TimerSize<T> = {
+  mobileSize: {
+    timerSize: T;
+    strokeWidth: T;
+  };
+  tabletSize: {
+    timerSize: T;
+    strokeWidth: T;
+  };
+  desktopSize: {
+    timerSize: T;
+    strokeWidth: T;
+  };
+};
+
+const timerSize: TimerSize<number> = {
+  mobileSize: {
+    timerSize: 240,
+    strokeWidth: 8,
+  },
+  tabletSize: {
+    timerSize: 290,
+    strokeWidth: 10,
+  },
+  desktopSize: {
+    timerSize: 330,
+    strokeWidth: 12,
+  },
+};
+
+const TimePanel = (): JSX.Element => {
+  const { mainReducer: data } = useSelector((state: AppState) => state);
+  const { appModes: modes, activeMode, fontTheme, colorTheme }: AppState = data;
   const [isPlaying, setPlaying] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
   const [isMounted, setMounted] = useState(false);
-  const { mainReducer: data } = useSelector((state: AppState) => state);
-  const { appModes: modes, activeMode, fontTheme, colorTheme }: AppState = data;
+  const windowWidth = useWindowWidth();
   const { time } = getMode(activeMode, modes);
   const secondsToCount = convertTimeToSec(time);
   const colorProperty = cutStr(colorTheme, 2);
@@ -27,6 +60,25 @@ const TimePanel = (): React.ReactNode => {
 
   const restartTimer = (): void => setReloadKey((prevValue) => (prevValue += 1));
   const toggleCounting = (): void => setPlaying((prevState) => !prevState);
+  const getTimerSize = (
+    size: TimerSize<number>,
+    currWindowWidth: number,
+    breakpoints: MediaBreakPoints
+  ): [number, number] => {
+    const { mobileSize, tabletSize, desktopSize } = size;
+    const { tablet, desktop } = breakpoints;
+    const isMinTabletDevice = currWindowWidth >= tablet;
+    const isDesktopSize = currWindowWidth >= desktop;
+    if (isDesktopSize) return [desktopSize.timerSize, desktopSize.strokeWidth];
+    return isMinTabletDevice
+      ? [tabletSize.timerSize, tabletSize.strokeWidth]
+      : [mobileSize.timerSize, mobileSize.strokeWidth];
+  };
+
+  const [circleSize, strokeWidth] = getTimerSize(timerSize, windowWidth, {
+    tablet: 768,
+    desktop: 992,
+  });
 
   useEffect(() => {
     setMounted(true);
@@ -45,15 +97,14 @@ const TimePanel = (): React.ReactNode => {
         duration={secondsToCount}
         initialRemainingTime={secondsToCount}
         colors={timerBgColor}
-        size={240}
-        strokeWidth={8}
+        size={circleSize}
+        strokeWidth={strokeWidth}
         trailColor="rgba(0,0,0,0)"
       >
         {({ remainingTime }) => {
           const timeLeft = remainingTime === undefined ? secondsToCount : remainingTime;
           const isTimePassed = timeLeft === 0;
           const [minutes, seconds] = formatTimeFromSec(timeLeft);
-
           const displayCurrTimerMode = (): TimerMode => {
             if (isTimePassed) return TimerMode.Restart;
             else {

@@ -2,22 +2,33 @@
 @use 'styles/helpers/mixins.scss' as *;
 
 .wrapper {
-  padding: 1rem 3rem;
-  width: 100%;
+  margin: 1rem 3rem;
   @include setFlex(column, center);
   color: $black;
 
   h4 {
     padding: 0 0 0.3rem 0;
   }
+
+  @include tablet {
+    margin: 2rem 3rem;
+    @include setFlex(column, flex-start, flex-start)
+  }
 }
 
 
 .modeList {
-  
   width: 100%;
+  margin: 1rem 0;
+  @include tablet {
+    @include setFlex(row, flex-start, space-between)
+  }
+  
 }
 
 .modeListElement {
-  @include setFlex(row, center, space-between)
+  @include setFlex(row, center, space-between);
+  @include tablet {
+    @include setFlex(column, flex-start);
+  }
 }

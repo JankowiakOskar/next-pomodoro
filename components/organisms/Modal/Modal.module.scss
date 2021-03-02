@@ -13,7 +13,7 @@
 .modal {
   max-width: 32rem;
   width: 90%;
-  height: 85%;
+  height: 90%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -22,6 +22,11 @@
 
   & > div:not(:nth-last-child(-n + 2)) {
     @include tinyBorderBottom
+  }
+
+  @include tablet {
+    max-width: 54rem;
+    max-height: 49rem;
   }
 }
 

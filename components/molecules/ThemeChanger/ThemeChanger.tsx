@@ -1,8 +1,10 @@
+import theme from 'styles/Theme.module.scss';
 import styles from './ThemeChanger.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveTheme } from 'store/actions';
 import { FontClasses, BgClasses, AppState, Theme } from 'store/types';
-import CircleSwticher from 'components/atoms/CircleSwitcher/CircleSwitcher';
+import CircleSwitcher from 'components/atoms/CircleSwitcher/CircleSwitcher';
+import classNames from 'classnames';
 
 type Title = 'Font' | 'Color';
 
@@ -16,10 +18,10 @@ const ThemeChanger: React.FC<Props> = ({ title, switchesList }) => {
     mainReducer: { colorTheme, fontTheme },
   } = useSelector((state: AppState) => state);
   const dispatch = useDispatch();
-
+  const textClasses = classNames(styles.title, theme[fontTheme]);
   return (
     <div className={styles.wrapper}>
-      <h4 className={styles.title}>{title}</h4>
+      <h4 className={textClasses}>{title}</h4>
       <div className={styles.switchesWrapper}>
         {switchesList.map((switcher) => {
           const isActive = [colorTheme, fontTheme].includes(switcher);
@@ -28,7 +30,7 @@ const ThemeChanger: React.FC<Props> = ({ title, switchesList }) => {
           );
 
           return (
-            <CircleSwticher
+            <CircleSwitcher
               key={switcher}
               isActive={isActive}
               isFontSwitcher={isFontSwitcher}

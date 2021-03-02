@@ -1,18 +1,30 @@
 @use 'styles/helpers/mixins.scss' as *;
 
 .container {
+  height: 100vh;
   max-height: 100vh;
   padding: 2rem 0;
   @include setFlex(column, center, flex-start);
   overflow: hidden;
 }
 
+.innerWrapper {
+  height: 100vh;
+  @include setFlex(column, center, space-around);
+}
+
 .modeBarWrapper {
-  padding: 4rem 0;
+ padding-top: 3rem;
+}
+
+
+.timePanelWrapper {
+  flex: 1;
+  padding-top: 3rem;
 }
 
 
 
 .settingsWrapper {
-  padding: 2rem 0 0 0;
+  padding: 1.5rem;
 }

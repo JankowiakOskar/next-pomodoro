@@ -2,8 +2,12 @@
 @use 'styles/helpers/mixins.scss' as *;
 
 .wrapper {
-  min-height: 10rem;
-  @include setFlex(column, center, center)
+  min-height: 9rem;
+  @include setFlex(column, center, center);
+  @include tablet {
+    margin: 1rem 3rem;
+    @include setFlex(row, center, space-between);
+  }
 }
 
 .title {
@@ -17,5 +21,11 @@
 
   & div {
     margin: 0 10px;
+  }
+
+  @include tablet {
+    div:last-child {
+      margin: 0 0 0 10px;
+    }
   }
 }

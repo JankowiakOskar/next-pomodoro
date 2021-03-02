@@ -18,24 +18,27 @@ const Home = (): React.ReactNode => {
     mainReducer: { appModes, isModalOpen },
   } = useSelector((state: AppState) => state);
   const dispatch = useDispatch();
-
   const handleModalOpening = (): typeof toggleModal => dispatch(toggleModal());
 
   return (
     <div className={styles.container}>
-      <Logo />
-      <div className={styles.modeBarWrapper}>
-        <ModeBar />
-      </div>
-      <TimePanel />
-      <div
-        className={styles.settingsWrapper}
-        onClick={handleModalOpening}
-        onKeyPress={handleModalOpening}
-        role="button"
-        tabIndex={0}
-      >
-        <SettingsIcon />
+      <div className={styles.innerWrapper}>
+        <Logo />
+        <div className={styles.modeBarWrapper}>
+          <ModeBar />
+        </div>
+        <div className={styles.timePanelWrapper}>
+          <TimePanel />
+        </div>
+        <div
+          className={styles.settingsWrapper}
+          onClick={handleModalOpening}
+          onKeyPress={handleModalOpening}
+          role="button"
+          tabIndex={0}
+        >
+          <SettingsIcon />
+        </div>
       </div>
       <Modal modalTitle="Settings" isOpen={isModalOpen} toggleModal={handleModalOpening}>
         <ModeSettersList modes={appModes} />
