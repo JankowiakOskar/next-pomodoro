@@ -40,7 +40,7 @@ const Button: React.FC<Props> = ({
   };
 
   return (
-    <button className={btnClass} onClick={() => handleClick()}>
+    <button data-testid="button" className={btnClass} onClick={() => handleClick()}>
       <span>{text || modeTitle}</span>
     </button>
   );
