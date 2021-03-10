@@ -4,7 +4,7 @@ import ArrowDown from 'assets/svgs/icon-arrow-down.svg';
 import ArrowUp from 'assets/svgs/icon-arrow-up.svg';
 import classNames from 'classnames';
 type InputElementProps = {
-  className: string;
+  className?: string;
   label: ModeName;
   value: number;
   labelFont?: string;
@@ -52,6 +52,7 @@ const InputElement: React.FC<InputElementProps> = ({
       </label>
       <div className={styles.inputWrapper}>
         <input
+          data-testid="input"
           className={styles.input}
           name={label}
           type="number"
@@ -60,10 +61,12 @@ const InputElement: React.FC<InputElementProps> = ({
         />
         <div className={styles.iconWrapper}>
           <ArrowUp
+            title="arrow-up"
             className={styles.arrow_icon}
             onClick={() => handleClick(value, ClickAction.increment)}
           />
           <ArrowDown
+            title="arrow-down"
             className={styles.arrowIcon}
             onClick={() => handleClick(value, ClickAction.decrement)}
           />

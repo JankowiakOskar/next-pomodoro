@@ -4,6 +4,9 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   moduleNameMapper: {
     '\\.(scss|sass|css)$': 'identity-obj-proxy',
-    "^@fooBar/(.*)": "<rootDir>/src/barFoo/$1"
+    "^@fooBar/(.*)": "<rootDir>/src/barFoo/$1",
+    "\\.svg": "<rootDir>/components/__mocks__/svgrMock.ts"
+
+  
   },
 };
